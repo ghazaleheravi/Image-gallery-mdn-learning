@@ -1,0 +1,46 @@
+const thumbnail = document.querySelector('.thumbnail');
+const bigImg = document.querySelector('.displaying-img');
+
+const btn = document.querySelector('button');
+const overlay = document.querySelector('.overlay');
+
+for(let i=1; i<=5; i++){  /*with this for we create all <img> with script, instead of writting them in html (hear we have 5 image)*/
+  const img = document.createElement('img');
+  img.setAttribute('class',`pic${i}`);
+  img.setAttribute('src',`./images/pic${i}.jpg`);
+  img.setAttribute('width','120');
+  img.setAttribute('height','120');
+  thumbnail.appendChild(img);
+}
+
+
+thumbnail.addEventListener('click',function(e){
+  if(e.target.matches('img.pic1')){
+    bigImg.src = './images/pic1.jpg';  
+  }else if(e.target.matches('img.pic2')){
+    bigImg.src = './images/pic2.jpg'; 
+  }else if(e.target.matches('img.pic3')){
+    bigImg.src = './images/pic3.jpg';  
+  }else if(e.target.matches('img.pic4')){
+    bigImg.src = './images/pic4.jpg';
+  }else if(e.target.matches('img.pic5')){
+    bigImg.src = './images/pic5.jpg';  
+  }
+});
+
+btn.onclick = function(){
+  const btnClass = btn.getAttribute('class');
+  if(btnClass === 'dark'){
+    btn.setAttribute('class', 'light');
+    btn.textContent = 'Lighten';
+    
+    overlay.style.backgroundColor = 'rgba(0,0,0,0.5)';
+  }else {
+    btn.setAttribute('class','dark');
+    btn.textContent = 'Darken';
+    overlay.style.backgroundColor = 'rgba(0,0,0,0)'; 
+  }
+}  
+      
+      
+     
